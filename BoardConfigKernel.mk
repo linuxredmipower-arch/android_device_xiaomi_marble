@@ -64,3 +64,7 @@ TARGET_KERNEL_EXT_MODULES := \
     qcom/opensource/video-driver \
     qcom/opensource/wlan/qcacld-3.0/.qca6490 \
     qcom/opensource/wlan/qcacld-3.0/.qca6750
+
+# PixelOS does not use AOSPA's vendor.aospa.power extension; disable the
+# optional power feature library from the AOSPA common tree.
+TARGET_POWER_FEATURE_EXT_LIB :=

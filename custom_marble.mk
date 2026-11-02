@@ -41,3 +41,40 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 # PixelOS OTA package (m pixelos)
 TARGET_FORCE_OTA_PACKAGE := true
+
+# PixelOS qacs interfaces expect the old qcom-caf display config HAL;
+# AOSPA display tree does not provide it. Marble does not use qacs.
+PRODUCT_SOURCE_ROOT_DIRS += -vendor/qcom/opensource/interfaces/qacs
+
+# AOSPA display tree needs the commonsys-intf display namespace
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/qcom/opensource/commonsys-intf/display
+
+# AOSPA power feature extension depends on vendor.aospa.power; not used here.
+PRODUCT_SOURCE_ROOT_DIRS += -device/xiaomi/sm8450-common/power
+
+# AOSPA-only apps/resources (co.aospa.resources) and PixelOS qac-services
+# (ambient AI) are not used by this PixelOS build; prune them before Soong.
+PRODUCT_SOURCE_ROOT_DIRS += -hardware/xiaomi/dolby
+PRODUCT_SOURCE_ROOT_DIRS += -device/xiaomi/sm8450-common/parts
+PRODUCT_SOURCE_ROOT_DIRS += -vendor/qcom/opensource/qac-services
+PRODUCT_PACKAGES := $(filter-out XiaomiDolby XiaomiParts,$(PRODUCT_PACKAGES))
+
+# AOSPA hardware/xiaomi megvii duplicates PixelOS hardware/lineage/compat.
+PRODUCT_SOURCE_ROOT_DIRS += -hardware/xiaomi/megvii
+
+# PixelOS modules in these namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/qcom-caf/bootctrl \
+    hardware/qcom-caf/thermal
+
+# Other-platform display trees duplicate AOSPA hardware/qcom/display modules.
+PRODUCT_SOURCE_ROOT_DIRS += -hardware/qcom-caf/sm8450-6.6/display
+PRODUCT_SOURCE_ROOT_DIRS += -hardware/qcom-caf/sm8550/display
+PRODUCT_SOURCE_ROOT_DIRS += -hardware/qcom-caf/sm8650/display
+PRODUCT_SOURCE_ROOT_DIRS += -hardware/qcom-caf/sm8750/display
+PRODUCT_SOURCE_ROOT_DIRS += -hardware/qcom-caf/sm8850/display
+
+# AOSPA blobs provide the vendor display stack; the source tree duplicates
+# libsdmcore/libsdmutils and the displayfeature HIDL.
+PRODUCT_SOURCE_ROOT_DIRS += -hardware/xiaomi/interfaces/xiaomi/hardware/displayfeature
