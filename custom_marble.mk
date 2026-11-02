@@ -7,6 +7,10 @@
 # PixelOS: AOSP Soong audio service installs the init rc; skip the Make copy.
 TARGET_SKIP_MAKE_AUDIO_SERVICE_RC := true
 
+# AOSP base products (AOSPA's aospa_marble.mk does the same)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
 # Inherit from marble device (AOSPA tree)
 $(call inherit-product, device/xiaomi/marble/device.mk)
 
