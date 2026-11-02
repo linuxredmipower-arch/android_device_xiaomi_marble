@@ -33,3 +33,7 @@ TARGET_SCREEN_DENSITY := 420
 
 # Vibrator
 $(call soong_config_set, XIAOMI_VIBRATOR, USE_EFFECT_STREAM, true)
+
+# PixelOS-CLO: LOS source kernel integration (AOSPA tree normally uses a
+# prebuilt kernel from device/xiaomi/marble-kernel).
+include $(DEVICE_PATH)/BoardConfigKernel.mk
