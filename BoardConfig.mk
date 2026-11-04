@@ -7,6 +7,13 @@
 
 DEVICE_PATH := device/xiaomi/marble
 
+# PixelOS version string used by the AOSPA kernel cmdline fingerprints.
+AOSPA_VERSION := PixelOS-CLO
+
+# QTI / kernel platform
+TARGET_BOARD_PLATFORM := taro
+TARGET_KERNEL_VERSION := 5.10
+
 # Inherit from sm8450-common
 include device/xiaomi/sm8450-common/BoardConfigCommon.mk
 
@@ -33,3 +40,6 @@ TARGET_SCREEN_DENSITY := 420
 
 # Vibrator
 $(call soong_config_set, XIAOMI_VIBRATOR, USE_EFFECT_STREAM, true)
+
+# AOSPA prebuilt kernel integration
+include $(DEVICE_PATH)/BoardConfigKernel.mk

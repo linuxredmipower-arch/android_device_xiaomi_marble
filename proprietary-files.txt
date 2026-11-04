@@ -1002,11 +1002,11 @@ vendor/lib64/libclient2slpi.notifier.so
 vendor/lib64/libdisplayconfig.qti.so
 vendor/lib64/libhdrdynamic.so
 vendor/lib64/libhdrdynamicootf.so
-vendor/lib64/libsdedrm.so;MODULE_SUFFIX=_xiaomi;OVERRIDES=libsdedrm
+# vendor/lib64/libsdedrm.so;MODULE_SUFFIX=_xiaomi;OVERRIDES=libsdedrm
 vendor/lib64/libsdm-disp-vndapis.so;MODULE_SUFFIX=_xiaomi;OVERRIDES=libsdm-disp-vndapis
-vendor/lib64/libsdmcore.so;MODULE_SUFFIX=_xiaomi;OVERRIDES=libsdmcore
+# vendor/lib64/libsdmcore.so;MODULE_SUFFIX=_xiaomi;OVERRIDES=libsdmcore
 vendor/lib64/libsdmextension.so;MODULE_SUFFIX=_xiaomi;OVERRIDES=libsdmextension
-vendor/lib64/libsdmutils.so;MODULE_SUFFIX=_xiaomi;OVERRIDES=libsdmutils
+# vendor/lib64/libsdmutils.so;MODULE_SUFFIX=_xiaomi;OVERRIDES=libsdmutils
 
 # Displayfeature
 odm/lib64/libhdrmode.so
