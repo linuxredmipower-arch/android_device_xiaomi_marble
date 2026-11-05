@@ -121,8 +121,12 @@ PRODUCT_SOURCE_ROOT_DIRS += -vendor/qcom/opensource/interfaces/qacs
 
 # AOSPA display product config: sets SOONG_CONFIG_qtidisplay_default=true,
 # which is what adds display_headers to libqdutils/libqservice etc.
+BUILD_DISPLAY_TECHPACK_SOURCE := true
 -include hardware/qcom/display/config/display-product.mk
 SOONG_CONFIG_qtidisplay_displayconfig_enabled := true
+SOONG_CONFIG_qtidisplay_var1 := false
+SOONG_CONFIG_qtidisplay_var2 := false
+SOONG_CONFIG_qtidisplay_var3 := false
 
 # AOSPA display tree needs the commonsys-intf display namespace
 PRODUCT_SOONG_NAMESPACES += \
