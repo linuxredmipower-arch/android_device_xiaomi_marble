@@ -141,6 +141,14 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/qcom-caf/bootctrl \
     hardware/qcom-caf/thermal
 
+# AOSPA display / vendor namespaces referenced by vendor/xiaomi blobs' Android.bp
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/qcom/display \
+    hardware/qcom/display/gralloc \
+    hardware/qcom/display/libdebug \
+    vendor/qcom/common/vendor/display/5.10 \
+    vendor/qcom/common/vendor/wlan
+
 # Other-platform display trees duplicate AOSPA hardware/qcom/display modules.
 PRODUCT_SOURCE_ROOT_DIRS += -hardware/qcom-caf/sm8450-6.6/display
 PRODUCT_SOURCE_ROOT_DIRS += -hardware/qcom-caf/sm8550/display
