@@ -119,14 +119,24 @@ TARGET_FORCE_OTA_PACKAGE := true
 # AOSPA display tree does not provide it. Marble does not use qacs.
 PRODUCT_SOURCE_ROOT_DIRS += -vendor/qcom/opensource/interfaces/qacs
 
-# AOSPA display product config: sets SOONG_CONFIG_qtidisplay_default=true,
-# which is what adds display_headers to libqdutils/libqservice etc.
-BUILD_DISPLAY_TECHPACK_SOURCE := true
--include hardware/qcom/display/config/display-product.mk
+# AOSPA display Soong config.
+# Do NOT include display-product.mk: it adds AOSPA display packages that do not
+# exist in this hybrid tree. Only the config variables are needed so that
+# qtidisplay_defaults adds display_headers and enables GRALLOC4/DRM PP.
+SOONG_CONFIG_NAMESPACES += qtidisplay
+SOONG_CONFIG_qtidisplay := drmpp headless llvmsa gralloc4 displayconfig_enabled udfps default var1 var2 var3 panel_dimension_extra_precision sdmcore_has_is_display_hw_available_func
+SOONG_CONFIG_qtidisplay_drmpp := true
+SOONG_CONFIG_qtidisplay_headless := false
+SOONG_CONFIG_qtidisplay_llvmsa := false
+SOONG_CONFIG_qtidisplay_gralloc4 := true
 SOONG_CONFIG_qtidisplay_displayconfig_enabled := true
+SOONG_CONFIG_qtidisplay_udfps := false
+SOONG_CONFIG_qtidisplay_default := true
 SOONG_CONFIG_qtidisplay_var1 := false
 SOONG_CONFIG_qtidisplay_var2 := false
 SOONG_CONFIG_qtidisplay_var3 := false
+SOONG_CONFIG_qtidisplay_panel_dimension_extra_precision := false
+SOONG_CONFIG_qtidisplay_sdmcore_has_is_display_hw_available_func := true
 
 # AOSPA display tree needs the commonsys-intf display namespace
 PRODUCT_SOONG_NAMESPACES += \
