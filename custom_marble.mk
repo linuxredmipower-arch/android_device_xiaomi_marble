@@ -119,6 +119,11 @@ TARGET_FORCE_OTA_PACKAGE := true
 # AOSPA display tree does not provide it. Marble does not use qacs.
 PRODUCT_SOURCE_ROOT_DIRS += -vendor/qcom/opensource/interfaces/qacs
 
+# AOSPA display product config: sets SOONG_CONFIG_qtidisplay_default=true,
+# which is what adds display_headers to libqdutils/libqservice etc.
+-include hardware/qcom/display/config/display-product.mk
+SOONG_CONFIG_qtidisplay_displayconfig_enabled := true
+
 # AOSPA display tree needs the commonsys-intf display namespace
 PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/opensource/commonsys-intf/display
