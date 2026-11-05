@@ -141,6 +141,10 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/qcom-caf/bootctrl \
     hardware/qcom-caf/thermal
 
+# AOSPA device/qcom/common: only sepolicy is used; exclude its Soong modules to
+# avoid duplicating hardware/qcom-caf/common.
+PRODUCT_SOURCE_ROOT_DIRS += -device/qcom/common
+
 # Other-platform display trees duplicate AOSPA hardware/qcom/display modules.
 PRODUCT_SOURCE_ROOT_DIRS += -hardware/qcom-caf/sm8450-6.6/display
 PRODUCT_SOURCE_ROOT_DIRS += -hardware/qcom-caf/sm8550/display
